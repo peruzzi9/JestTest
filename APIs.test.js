@@ -2,7 +2,7 @@ const mathOperations = require("./calculator");
 const request = require("supertest");
 const requestURL = "https://api.dev.swoshstest.com";
 
-describe("** GET APIs Test=================", () => {
+describe("**SwoshsVPN GET APIs Test=================", () => {
 
 
   test(" /api/notice ================= ", async () => {
@@ -25,7 +25,7 @@ describe("** GET APIs Test=================", () => {
   
 });
 
-describe("POST APIs Test=================", () => {
+describe("SwoshsVPN POST APIs Test=================", () => {
  
   test(" /api/login ================= ", async () => {
     
@@ -44,6 +44,21 @@ describe("POST APIs Test=================", () => {
         expect(response.statusCode).toBe(201); 
         expect(response.body.accessToken).not.toBe(null); 
         expect(response.body.accessToken).not.toHaveLength(0);   
+  });
+}); 
+
+describe("Feima POST APIs Test=================", () => {
+ 
+  test("Feima /payment/pay ================= ", async () => {
+    
+      let data = { }; 
+      const response = await request("http://tiaoshi.haohuowsq.top/index.php").post('/home/payment/pay').send(data) 
+      .expect(function(res) {
+        if(res.status == 200){
+          console.log("Response====",JSON.stringify(res.text, null, 2));
+         }
+      }) 
+      expect(response.status).toBe(200);    
   });
 }); 
 
